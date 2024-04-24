@@ -1,28 +1,19 @@
 "use client"
 
 import Image from "next/image";
-import { signIn } from "next-auth/react";
-import {loginService} from "@/services/auth.service";
+import {signIn} from "next-auth/react";
 
 function LoginPage() {
 
-    // define handle login
-    async function handleLogin (userInfo) {
-
-        // define structure object
+    async function handleLogin(userInfo) {
         const newUser = {
             email: userInfo.get("email"),
             password: userInfo.get("password")
         }
-
-        // calling next-auth service and passing "newUserInfo"
         const res = signIn("credentials", {
             redirect: false,
             ...newUser,
         })
-
-        const login = await loginService(newUser);
-        console.log("Login : ", login);
     }
 
     return (

@@ -1,14 +1,12 @@
 "use client";
 
-import {useForm} from "react-hook-form";
-import {registerUser} from "@/services/auth.service";
 import Image from "next/image";
-import {useRouter} from "next/navigation";
-
+import useFormState from "react-dom";
+import signupAction from "@/actions/signupAction";
+import {useForm} from "react-hook-form";
+import {useRouter} from "next/router";
 
 function RegisterPage() {
-
-    const router = useRouter();
 
     const {
         handleSubmit,
@@ -18,10 +16,9 @@ function RegisterPage() {
 
     const handleUserRegister = async (data) => {
         console.log(data);
-        await registerUser(data);
-        // // router.push("/login");
-        // router.push("/login");
+        await signupAction(data);
     };
+
 
     return (
         <div className=" flex justify-center">
@@ -42,6 +39,7 @@ function RegisterPage() {
                                     First name
                                 </label>
                                 <input
+                                    name="first_name"
                                     type="text"
                                     id="first_name"
                                     className="bg-gray-100 border border-gray-200 peer h-10 w-full rounded-md bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out text-black"
@@ -59,6 +57,7 @@ function RegisterPage() {
                                     Last name
                                 </label>
                                 <input
+                                    name="last_name"
                                     type="text"
                                     id="last_name"
                                     className="bg-gray-100 border border-gray-200 peer h-10 w-full rounded-md bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out text-black"
@@ -77,6 +76,7 @@ function RegisterPage() {
                                     Email
                                 </label>
                                 <input
+                                    name="email"
                                     type="email"
                                     id="company"
                                     className="bg-gray-100 border border-gray-200 peer h-10 w-full rounded-md bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out text-black"
