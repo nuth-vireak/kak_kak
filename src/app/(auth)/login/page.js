@@ -1,19 +1,26 @@
 "use client"
 
 import Image from "next/image";
-import {signIn} from "next-auth/react";
+import {signIn} from "next-auth/react"
+import {useRouter} from "next/navigation";
 
 function LoginPage() {
+
+    const router = useRouter();
 
     async function handleLogin(userInfo) {
         const newUser = {
             email: userInfo.get("email"),
             password: userInfo.get("password")
         }
-        const res = signIn("credentials", {
+        const res = await signIn("credentials", {
             redirect: false,
             ...newUser,
-        })
+        });
+        console.log("key: ", res)
+        if (res.ok) {
+            router.push("/dashboard");
+        }
     }
 
     return (
