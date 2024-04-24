@@ -1,10 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import useFormState from "react-dom";
 import signupAction from "@/actions/signupAction";
 import {useForm} from "react-hook-form";
-import {useRouter} from "next/router";
 
 function RegisterPage() {
 
@@ -19,7 +17,6 @@ function RegisterPage() {
         await signupAction(data);
     };
 
-
     return (
         <div className=" flex justify-center">
             <div className=" sm:rounded-lg flex justify-center flex-1 mt-11 py-11">
@@ -33,18 +30,16 @@ function RegisterPage() {
                         <div className="grid gap-6 mb-6 md:grid-cols-2 mt-11 ">
                             <div>
                                 <label
-                                    form="first_name"
+                                    form="firstname"
                                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white "
                                 >
                                     First name
                                 </label>
                                 <input
-                                    name="first_name"
                                     type="text"
-                                    id="first_name"
                                     className="bg-gray-100 border border-gray-200 peer h-10 w-full rounded-md bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out text-black"
                                     placeholder="first name"
-                                    {...register("first_name", {
+                                    {...register("firstname", {
                                         required: "First name cannot be empty.",
                                     })
                                     }
@@ -52,17 +47,15 @@ function RegisterPage() {
                             </div>
                             <div>
                                 <label
-                                    form="last_name"
+                                    form="lastname"
                                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                     Last name
                                 </label>
                                 <input
-                                    name="last_name"
                                     type="text"
-                                    id="last_name"
                                     className="bg-gray-100 border border-gray-200 peer h-10 w-full rounded-md bg-gray-50 px-4 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out text-black"
                                     placeholder="last name"
-                                    {...register("last_name", {
+                                    {...register("lastname", {
                                         required: "Last name cannot be empty.",
                                     })
                                     }
